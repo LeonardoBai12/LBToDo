@@ -17,6 +17,6 @@ This projects uses Kotlin as the main language, MVVM, Clean Architeture and some
 7. **JUnit**
 8. **Espresso**
 
-# Attributions:
+## Attributions:
 * <a href='https://www.freepik.com/photos/bicycle'>Bicycle photo created by freepik - www.freepik.com</a>
 * <a href='https://www.freepik.com/photos/maintenance-service'>Maintenance service photo created by ArthurHidden - www.freepik.com</a>
