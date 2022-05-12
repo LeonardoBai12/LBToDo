@@ -33,6 +33,9 @@ fun SignInScreen(navController: NavHostController) {
     val email = remember {
         mutableStateOf("")
     }
+    val name = remember {
+        mutableStateOf("")
+    }
     val password = remember {
         mutableStateOf("")
     }
@@ -54,7 +57,7 @@ fun SignInScreen(navController: NavHostController) {
                 fontSize = 24.sp
             )
 
-            SignInTextFields(email, password)
+            SignInTextFields(email, name, password)
 
             DefaultTextButton(
                 modifier = Modifier.padding(horizontal = 72.dp, vertical = 16.dp),
@@ -71,6 +74,7 @@ fun SignInScreen(navController: NavHostController) {
 @Composable
 private fun SignInTextFields(
     email: MutableState<String>,
+    name: MutableState<String>,
     password: MutableState<String>
 ) {
     Column(
@@ -94,7 +98,7 @@ private fun SignInTextFields(
 
         DefaultInputText(
             modifier = Modifier.padding(8.dp),
-            text = email.value,
+            text = name.value,
             icon = {
                 Icon(
                     Icons.Default.AccountBox,
@@ -103,10 +107,9 @@ private fun SignInTextFields(
             },
             label = "Nome completo",
             onValueChange = {
-                email.value = it
+                name.value = it
             }
         )
-
 
         DefaultInputText(
             modifier = Modifier.padding(8.dp),
