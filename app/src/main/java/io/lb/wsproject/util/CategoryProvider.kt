@@ -1,4 +1,4 @@
-package io.lb.wsproject.core
+package io.lb.wsproject.util
 
 import io.lb.wsproject.R
 import io.lb.wsproject.feature_main.domain.model.Category

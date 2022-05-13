@@ -87,21 +87,21 @@ fun DefaultIconButton(
 fun DefaultTextButton(
     modifier: Modifier = Modifier,
     text: String,
+    enabled: Boolean = true,
     icon: Painter? = null,
     containerColor: Color = MaterialTheme.colorScheme.primary,
     contentColor: Color = MaterialTheme.colorScheme.onPrimary,
     onClick: () -> Unit,
 ) {
     Button(
-        modifier = modifier
-            .height(56.dp)
-            .fillMaxWidth(),
-        onClick = onClick,
+        modifier = modifier.height(56.dp),
+        enabled = enabled,
+        shape = RoundedCornerShape(36.dp),
         colors = ButtonDefaults.buttonColors(
             containerColor = containerColor,
             contentColor = contentColor,
         ),
-        shape = RoundedCornerShape(36.dp)
+        onClick = onClick,
     ) {
         Row(
             verticalAlignment = Alignment.CenterVertically,

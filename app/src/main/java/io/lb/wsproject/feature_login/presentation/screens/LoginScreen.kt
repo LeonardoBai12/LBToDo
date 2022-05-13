@@ -76,14 +76,16 @@ private fun LoginButtons(context: Context) {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         DefaultTextButton(
-            modifier = Modifier.padding(horizontal = 72.dp, vertical = 16.dp),
+            modifier = Modifier.fillMaxWidth()
+                .padding(horizontal = 72.dp, vertical = 16.dp),
             text = "Entrar",
             onClick = {
                 context.startActivity(Intent(context, MainActivity::class.java))
             },
         )
         DefaultTextButton(
-            modifier = Modifier.padding(horizontal = 72.dp)
+            modifier = Modifier.fillMaxWidth()
+                .padding(horizontal = 72.dp)
                 .shadow(2.dp, shape = RoundedCornerShape(36.dp)),
             text = "Entrar com Google",
             icon = painterResource(id = R.drawable.ic_google),

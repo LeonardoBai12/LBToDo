@@ -25,6 +25,7 @@ fun LoginHomeScreen(navController: NavHostController) {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         DefaultTextButton(
+            modifier = Modifier.fillMaxWidth(),
             text = "Já tenho um cadastro",
             onClick = {
                 navController.navigate(route = LoginScreens.LoginScreen.name)
@@ -34,6 +35,7 @@ fun LoginHomeScreen(navController: NavHostController) {
         Spacer(modifier = Modifier.height(24.dp))
 
         DefaultTextButton(
+            modifier = Modifier.fillMaxWidth(),
             text = "Cadastrar-se",
             containerColor = MaterialTheme.colorScheme.onPrimary,
             contentColor = MaterialTheme.colorScheme.primary,

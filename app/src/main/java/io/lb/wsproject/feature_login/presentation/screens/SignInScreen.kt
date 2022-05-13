@@ -60,7 +60,8 @@ fun SignInScreen(navController: NavHostController) {
             SignInTextFields(email, name, password)
 
             DefaultTextButton(
-                modifier = Modifier.padding(horizontal = 72.dp, vertical = 16.dp),
+                modifier = Modifier.fillMaxWidth()
+                    .padding(horizontal = 72.dp, vertical = 16.dp),
                 text = "Criar conta",
                 onClick = {
 
