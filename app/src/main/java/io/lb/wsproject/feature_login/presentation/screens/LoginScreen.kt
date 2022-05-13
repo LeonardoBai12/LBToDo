@@ -132,7 +132,7 @@ private fun SignInTextFields(
                     contentDescription = "LockIcon"
                 )
             },
-            label = "Password",
+            label = "Senha",
             keyboardType = KeyboardType.Password,
             onValueChange = {
                 password.value = it

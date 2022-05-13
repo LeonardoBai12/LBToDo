@@ -39,6 +39,9 @@ fun SignInScreen(navController: NavHostController) {
     val password = remember {
         mutableStateOf("")
     }
+    val repeatedPassword = remember {
+        mutableStateOf("")
+    }
 
     Surface(
         modifier = Modifier.fillMaxSize(),
@@ -57,7 +60,7 @@ fun SignInScreen(navController: NavHostController) {
                 fontSize = 24.sp
             )
 
-            SignInTextFields(email, name, password)
+            SignInTextFields(email, name, password, repeatedPassword)
 
             DefaultTextButton(
                 modifier = Modifier.fillMaxWidth()
@@ -76,7 +79,8 @@ fun SignInScreen(navController: NavHostController) {
 private fun SignInTextFields(
     email: MutableState<String>,
     name: MutableState<String>,
-    password: MutableState<String>
+    password: MutableState<String>,
+    repeatedPassword: MutableState<String>,
 ) {
     Column(
         verticalArrangement = Arrangement.Center,
@@ -121,10 +125,26 @@ private fun SignInTextFields(
                     contentDescription = "LockIcon"
                 )
             },
-            label = "Password",
+            label = "Senha",
             keyboardType = KeyboardType.Password,
             onValueChange = {
                 password.value = it
+            }
+        )
+
+        DefaultInputText(
+            modifier = Modifier.padding(8.dp),
+            text = password.value,
+            icon = {
+                Icon(
+                    Icons.Default.Lock,
+                    contentDescription = "LockIcon"
+                )
+            },
+            label = "Repita sua senha",
+            keyboardType = KeyboardType.Password,
+            onValueChange = {
+                repeatedPassword.value = it
             }
         )
     }
