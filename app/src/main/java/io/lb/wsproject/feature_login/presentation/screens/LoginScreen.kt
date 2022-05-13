@@ -1,7 +1,11 @@
 package io.lb.wsproject.feature_login.presentation.screens
 
+import android.content.Context
+import android.content.Intent
+import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.filled.Lock
@@ -20,9 +24,12 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import io.lb.wsproject.R
+import io.lb.wsproject.feature_main.presentation.MainActivity
 import io.lb.wsproject.ui.widgets.DefaultInputText
 import io.lb.wsproject.ui.widgets.DefaultTextButton
 
+@ExperimentalMaterialApi
+@ExperimentalAnimationApi
 @ExperimentalComposeUiApi
 @ExperimentalMaterial3Api
 @Composable
@@ -53,13 +60,17 @@ fun LoginScreen(navController: NavHostController) {
             )
 
             SignInTextFields(email, password)
-            LoginButtons()
+            LoginButtons(context)
         }
     }
 }
 
+@ExperimentalMaterialApi
+@ExperimentalMaterial3Api
+@ExperimentalComposeUiApi
+@ExperimentalAnimationApi
 @Composable
-private fun LoginButtons() {
+private fun LoginButtons(context: Context) {
     Column(
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
@@ -68,7 +79,7 @@ private fun LoginButtons() {
             modifier = Modifier.padding(horizontal = 72.dp, vertical = 16.dp),
             text = "Entrar",
             onClick = {
-
+                context.startActivity(Intent(context, MainActivity::class.java))
             },
         )
         DefaultTextButton(

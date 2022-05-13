@@ -1,6 +1,7 @@
 package io.lb.wsproject.feature_login.presentation.navigation
 
 import androidx.compose.animation.ExperimentalAnimationApi
+import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.ExperimentalComposeUiApi
@@ -11,6 +12,7 @@ import io.lb.wsproject.feature_login.presentation.screens.LoginHomeScreen
 import io.lb.wsproject.feature_login.presentation.screens.LoginScreen
 import io.lb.wsproject.feature_login.presentation.screens.SignInScreen
 
+@ExperimentalMaterialApi
 @ExperimentalMaterial3Api
 @ExperimentalComposeUiApi
 @ExperimentalAnimationApi

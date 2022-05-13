@@ -5,6 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.layout.*
+import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Alignment
@@ -17,6 +18,7 @@ import io.lb.wsproject.feature_login.presentation.widgets.HomeLoginBackground
 import io.lb.wsproject.feature_login.presentation.widgets.HomeLoginHeader
 import io.lb.wsproject.ui.theme.WSProjectTheme
 
+@ExperimentalMaterialApi
 @ExperimentalMaterial3Api
 @ExperimentalComposeUiApi
 @ExperimentalAnimationApi

@@ -12,6 +12,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.res.painterResource
@@ -24,19 +25,60 @@ import io.lb.wsproject.R
 
 @Composable
 fun WSLogoIcon() {
+    DefaultIcon(
+        modifier = Modifier.size(72.dp),
+        painter = painterResource(id = R.drawable.ic_launcher_foreground),
+        contentDescription = "LoginHomeScreenIcon",
+    )
+}
+
+@Composable
+fun DefaultIcon(
+    modifier: Modifier = Modifier,
+    iconModifier: Modifier = Modifier.fillMaxSize(),
+    shape: Shape = RoundedCornerShape(24.dp),
+    painter: Painter,
+    contentDescription: String,
+) {
     Box(
-        modifier = Modifier
-            .size(72.dp)
+        modifier = modifier
             .background(
                 color = MaterialTheme.colorScheme.onPrimary,
-                shape = RoundedCornerShape(24.dp)
+                shape = shape
             ),
+        contentAlignment = Alignment.Center,
     ) {
         Icon(
-            modifier = Modifier.fillMaxSize(),
-            painter = painterResource(id = R.drawable.ic_launcher_foreground),
-            contentDescription = "LoginHomeScreenIcon",
+            modifier = iconModifier,
+            painter = painter,
+            contentDescription = contentDescription,
             tint = MaterialTheme.colorScheme.primary
+        )
+    }
+}
+
+@Composable
+fun DefaultIconButton(
+    modifier: Modifier = Modifier,
+    iconModifier: Modifier = Modifier.fillMaxSize(),
+    shape: Shape = RoundedCornerShape(24.dp),
+    painter: Painter,
+    contentDescription: String,
+    onClick: () -> Unit
+) {
+    IconButton(
+        modifier = modifier
+            .background(
+                color = MaterialTheme.colorScheme.onPrimaryContainer,
+                shape = shape
+            ),
+        onClick = onClick,
+    ) {
+        Icon(
+            modifier = iconModifier,
+            painter = painter,
+            contentDescription = contentDescription,
+            tint = MaterialTheme.colorScheme.primaryContainer
         )
     }
 }
@@ -51,7 +93,8 @@ fun DefaultTextButton(
     onClick: () -> Unit,
 ) {
     Button(
-        modifier = modifier.height(56.dp)
+        modifier = modifier
+            .height(56.dp)
             .fillMaxWidth(),
         onClick = onClick,
         colors = ButtonDefaults.buttonColors(
