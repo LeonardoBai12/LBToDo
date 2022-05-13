@@ -69,7 +69,7 @@ fun DefaultIconButton(
     IconButton(
         modifier = modifier
             .background(
-                color = MaterialTheme.colorScheme.onPrimaryContainer,
+                color = MaterialTheme.colorScheme.primary,
                 shape = shape
             ),
         onClick = onClick,
@@ -78,7 +78,7 @@ fun DefaultIconButton(
             modifier = iconModifier,
             painter = painter,
             contentDescription = contentDescription,
-            tint = MaterialTheme.colorScheme.primaryContainer
+            tint = MaterialTheme.colorScheme.onPrimary
         )
     }
 }
