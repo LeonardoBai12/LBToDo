@@ -208,7 +208,7 @@ fun DefaultFilledTextField(
             singleLine = isSingleLined,
             leadingIcon = icon,
             enabled = isEnabled,
-            trailingIcon = if (hasCloseButton) {
+            trailingIcon = if (hasCloseButton && text.value.isNotEmpty()) {
                 { CloseButton(text) }
             } else null,
             colors = TextFieldDefaults.textFieldColors(
