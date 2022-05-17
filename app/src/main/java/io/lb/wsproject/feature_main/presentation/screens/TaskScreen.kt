@@ -1,8 +1,7 @@
 package io.lb.wsproject.feature_main.presentation.screens
 
-import android.app.DatePickerDialog
-import android.app.TimePickerDialog
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Icon
 import androidx.compose.material.Scaffold
@@ -124,8 +123,8 @@ private fun DateAndTimePickers(
     time: MutableState<String>,
 ) {
     val context = LocalContext.current
-    val datePicker = datePicker(context, date)
-    val timePicker = timePicker(context, time)
+    val datePicker = datePicker(context, date, isSystemInDarkTheme())
+    val timePicker = timePicker(context, time, isSystemInDarkTheme())
 
     Row(
         modifier = Modifier

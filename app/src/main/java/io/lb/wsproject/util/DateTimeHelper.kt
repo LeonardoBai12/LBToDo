@@ -4,28 +4,42 @@ import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.content.Context
 import androidx.compose.runtime.MutableState
+import io.lb.wsproject.R
 import java.text.SimpleDateFormat
 import java.util.*
 
-fun timePicker(context: Context, time: MutableState<String>): TimePickerDialog {
-    val calendar = Calendar.getInstance()
+fun timePicker(context: Context, time: MutableState<String>, isDarkTheme: Boolean): TimePickerDialog {
+    val calendar = Calendar.getInstance(Locale.ENGLISH)
+    val theme = if (isDarkTheme) {
+        R.style.Theme_DateDialogDark
+    } else {
+        R.style.Theme_DateDialogLight
+    }
 
     return TimePickerDialog(
         context,
+        theme,
         {_, hour, minute ->
             time.value = timeToString(hour, minute)
         },
-        calendar.get(Calendar.HOUR),
+        calendar.get(Calendar.HOUR_OF_DAY),
         calendar.get(Calendar.MINUTE),
         true
     )
 }
 
-fun datePicker(context: Context, date: MutableState<String>): DatePickerDialog {
-    val calendar = Calendar.getInstance()
+fun datePicker(context: Context, date: MutableState<String>, isDarkTheme: Boolean): DatePickerDialog {
+    val calendar = Calendar.getInstance(Locale.ENGLISH)
+    val theme = if (isDarkTheme) {
+        R.style.Theme_DateDialogDark
+    } else {
+        R.style.Theme_DateDialogLight
+    }
+
 
     return DatePickerDialog(
         context,
+        theme,
         { _, year, month, day ->
             date.value = dateToString(day, month, year)
         },
