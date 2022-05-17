@@ -36,7 +36,6 @@ fun datePicker(context: Context, date: MutableState<String>, isDarkTheme: Boolea
         R.style.Theme_DateDialogLight
     }
 
-
     return DatePickerDialog(
         context,
         theme,
