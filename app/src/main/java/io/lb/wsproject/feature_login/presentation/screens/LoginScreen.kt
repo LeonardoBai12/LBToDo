@@ -1,5 +1,6 @@
 package io.lb.wsproject.feature_login.presentation.screens
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import androidx.compose.animation.ExperimentalAnimationApi
@@ -34,7 +35,6 @@ import io.lb.wsproject.ui.widgets.DefaultTextButton
 @ExperimentalMaterial3Api
 @Composable
 fun LoginScreen(navController: NavHostController) {
-    val context = LocalContext.current
     val email = remember {
         mutableStateOf("")
     }
@@ -60,7 +60,7 @@ fun LoginScreen(navController: NavHostController) {
             )
 
             SignInTextFields(email, password)
-            LoginButtons(context)
+            LoginButtons()
         }
     }
 }
@@ -70,7 +70,9 @@ fun LoginScreen(navController: NavHostController) {
 @ExperimentalComposeUiApi
 @ExperimentalAnimationApi
 @Composable
-private fun LoginButtons(context: Context) {
+private fun LoginButtons() {
+    val context = LocalContext.current as Activity
+
     Column(
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
@@ -81,6 +83,7 @@ private fun LoginButtons(context: Context) {
             text = "Entrar",
             onClick = {
                 context.startActivity(Intent(context, MainActivity::class.java))
+                context.finishAffinity()
             },
         )
         DefaultTextButton(

@@ -1,14 +1,18 @@
 package io.lb.wsproject.ui.widgets
 
-import android.graphics.drawable.Icon
+import android.content.Context
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.Close
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
@@ -20,8 +24,11 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.fragment.app.FragmentManager
+import com.google.android.material.datepicker.MaterialDatePicker
 import io.lb.wsproject.R
 
 @Composable
@@ -131,7 +138,7 @@ fun DefaultTextField(
     modifier: Modifier = Modifier,
     text: String,
     label: String,
-    icon: @Composable (() -> Unit) = {},
+    icon: @Composable (() -> Unit)? = null,
     isEnabled: Boolean = true,
     isSingleLined: Boolean = true,
     keyboardType: KeyboardType = KeyboardType.Ascii,
@@ -170,43 +177,70 @@ fun DefaultTextField(
 
 @ExperimentalComposeUiApi
 @Composable
-fun DefaultOutlinedTextField(
+fun DefaultFilledTextField(
     modifier: Modifier = Modifier,
-    text: String,
+    text: MutableState<String>,
     label: String,
     icon: @Composable (() -> Unit)? = null,
     isEnabled: Boolean = true,
     isSingleLined: Boolean = true,
+    hasCloseButton: Boolean = false,
     keyboardType: KeyboardType = KeyboardType.Ascii,
-    onValueChange: (String) -> Unit,
     onImeAction: () -> Unit = {},
 ) {
     val keyboardController = LocalSoftwareKeyboardController.current
 
-    OutlinedTextField(
-        modifier = modifier,
-        value = text,
-        singleLine = isSingleLined,
-        leadingIcon = icon,
-        enabled = isEnabled,
-        colors = TextFieldDefaults.textFieldColors(
-            containerColor = Color.Transparent,
-        ),
-        label = {
-            Text(text = label)
+    Column(
+        modifier = modifier
+    ) {
+        Text(
+            text = label,
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(4.dp),
+            textAlign = TextAlign.Start,
+        )
+
+        TextField(
+            modifier = Modifier.fillMaxWidth(),
+            value = text.value,
+            shape = RoundedCornerShape(8.dp),
+            singleLine = isSingleLined,
+            leadingIcon = icon,
+            enabled = isEnabled,
+            trailingIcon = if (hasCloseButton) {
+                { CloseButton(text) }
+            } else null,
+            colors = TextFieldDefaults.textFieldColors(
+                containerColor = MaterialTheme.colorScheme.surfaceVariant,
+                focusedIndicatorColor = Color.Transparent,
+                unfocusedIndicatorColor = Color.Transparent,
+                textColor = MaterialTheme.colorScheme.onSurfaceVariant
+            ),
+            keyboardOptions = KeyboardOptions.Default.copy(
+                imeAction = ImeAction.Done,
+                keyboardType = keyboardType
+            ),
+            keyboardActions = KeyboardActions(
+                onDone = {
+                    onImeAction.invoke()
+                    keyboardController?.hide()
+                }
+            ),
+            onValueChange = {
+                text.value = it
+            },
+        )
+    }
+}
+
+@Composable
+private fun CloseButton(text: MutableState<String>) {
+    Icon(
+        Icons.Default.Close,
+        modifier = Modifier.clickable {
+            text.value = ""
         },
-        keyboardOptions = KeyboardOptions.Default.copy(
-            imeAction = ImeAction.Done,
-            keyboardType = keyboardType
-        ),
-        keyboardActions = KeyboardActions(
-            onDone = {
-                onImeAction.invoke()
-                keyboardController?.hide()
-            }
-        ),
-        onValueChange = {
-            onValueChange.invoke(it)
-        }
+        contentDescription = "closeIcon",
     )
 }
