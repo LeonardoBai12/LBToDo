@@ -23,7 +23,7 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
-import io.lb.wsproject.ui.widgets.DefaultInputText
+import io.lb.wsproject.ui.widgets.DefaultTextField
 import io.lb.wsproject.ui.widgets.DefaultTextButton
 
 @ExperimentalComposeUiApi
@@ -86,7 +86,7 @@ private fun SignInTextFields(
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        DefaultInputText(
+        DefaultTextField(
             modifier = Modifier.padding(8.dp),
             text = email.value,
             icon = {
@@ -101,7 +101,7 @@ private fun SignInTextFields(
             }
         )
 
-        DefaultInputText(
+        DefaultTextField(
             modifier = Modifier.padding(8.dp),
             text = name.value,
             icon = {
@@ -116,7 +116,7 @@ private fun SignInTextFields(
             }
         )
 
-        DefaultInputText(
+        DefaultTextField(
             modifier = Modifier.padding(8.dp),
             text = password.value,
             icon = {
@@ -132,7 +132,7 @@ private fun SignInTextFields(
             }
         )
 
-        DefaultInputText(
+        DefaultTextField(
             modifier = Modifier.padding(8.dp),
             text = password.value,
             icon = {

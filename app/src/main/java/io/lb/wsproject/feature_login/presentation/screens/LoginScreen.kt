@@ -25,7 +25,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import io.lb.wsproject.R
 import io.lb.wsproject.feature_main.presentation.MainActivity
-import io.lb.wsproject.ui.widgets.DefaultInputText
+import io.lb.wsproject.ui.widgets.DefaultTextField
 import io.lb.wsproject.ui.widgets.DefaultTextButton
 
 @ExperimentalMaterialApi
@@ -108,7 +108,7 @@ private fun SignInTextFields(
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        DefaultInputText(
+        DefaultTextField(
             modifier = Modifier.padding(8.dp),
             text = email.value,
             icon = {
@@ -123,7 +123,7 @@ private fun SignInTextFields(
             }
         )
 
-        DefaultInputText(
+        DefaultTextField(
             modifier = Modifier.padding(8.dp),
             text = password.value,
             icon = {

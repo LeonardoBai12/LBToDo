@@ -4,6 +4,7 @@ import android.graphics.drawable.Icon
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.*
@@ -126,7 +127,7 @@ fun DefaultTextButton(
 
 @ExperimentalComposeUiApi
 @Composable
-fun DefaultInputText(
+fun DefaultTextField(
     modifier: Modifier = Modifier,
     text: String,
     label: String,
@@ -140,6 +141,49 @@ fun DefaultInputText(
     val keyboardController = LocalSoftwareKeyboardController.current
 
     TextField(
+        modifier = modifier,
+        value = text,
+        singleLine = isSingleLined,
+        leadingIcon = icon,
+        enabled = isEnabled,
+        colors = TextFieldDefaults.textFieldColors(
+            containerColor = Color.Transparent,
+        ),
+        label = {
+            Text(text = label)
+        },
+        keyboardOptions = KeyboardOptions.Default.copy(
+            imeAction = ImeAction.Done,
+            keyboardType = keyboardType
+        ),
+        keyboardActions = KeyboardActions(
+            onDone = {
+                onImeAction.invoke()
+                keyboardController?.hide()
+            }
+        ),
+        onValueChange = {
+            onValueChange.invoke(it)
+        }
+    )
+}
+
+@ExperimentalComposeUiApi
+@Composable
+fun DefaultOutlinedTextField(
+    modifier: Modifier = Modifier,
+    text: String,
+    label: String,
+    icon: @Composable (() -> Unit)? = null,
+    isEnabled: Boolean = true,
+    isSingleLined: Boolean = true,
+    keyboardType: KeyboardType = KeyboardType.Ascii,
+    onValueChange: (String) -> Unit,
+    onImeAction: () -> Unit = {},
+) {
+    val keyboardController = LocalSoftwareKeyboardController.current
+
+    OutlinedTextField(
         modifier = modifier,
         value = text,
         singleLine = isSingleLined,

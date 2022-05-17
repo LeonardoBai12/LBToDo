@@ -22,7 +22,10 @@ import io.lb.wsproject.ui.widgets.DefaultIconButton
 import io.lb.wsproject.ui.widgets.DefaultTextButton
 
 @Composable
-fun NewTaskBottomSheetContent(selectedCategory: MutableState<String>) {
+fun NewTaskBottomSheetContent(
+    selectedCategory: MutableState<String>,
+    onClick: () -> Unit
+) {
     Column(
         modifier = Modifier.fillMaxWidth()
             .wrapContentHeight()
@@ -54,10 +57,9 @@ fun NewTaskBottomSheetContent(selectedCategory: MutableState<String>) {
         DefaultTextButton(
             modifier = Modifier.width(200.dp),
             text = "Criar nova tarefa",
-            enabled = selectedCategory.value.isNotEmpty()
-        ) {
-
-        }
+            enabled = selectedCategory.value.isNotEmpty(),
+            onClick = onClick
+        )
     }
 }
 
