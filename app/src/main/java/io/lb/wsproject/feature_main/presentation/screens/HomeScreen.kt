@@ -12,6 +12,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import io.lb.wsproject.feature_main.presentation.navigation.MainScreens
@@ -67,13 +68,18 @@ private fun HomeScaffold(
         modifier = Modifier.fillMaxSize(),
         floatingActionButton = {
             FloatingActionButton(
+                containerColor = MaterialTheme.colorScheme.primary,
                 onClick = {
                     coroutineScope.launch {
                         bottomSheetState.show()
                     }
                 },
             ) {
-                Icon(Icons.Default.Add, contentDescription = "HomeFAB")
+                Icon(
+                    Icons.Default.Add,
+                    contentDescription = "HomeFAB",
+                    tint = MaterialTheme.colorScheme.onPrimary
+                )
             }
         },
     ) {
