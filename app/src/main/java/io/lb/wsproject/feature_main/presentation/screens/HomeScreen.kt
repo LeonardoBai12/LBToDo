@@ -15,6 +15,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
+import io.lb.wsproject.feature_login.presentation.widgets.TaskCard
 import io.lb.wsproject.feature_main.presentation.navigation.MainScreens
 import io.lb.wsproject.feature_main.presentation.widgets.NewTaskBottomSheetContent
 import kotlinx.coroutines.CoroutineScope
@@ -90,6 +91,11 @@ private fun HomeScaffold(
             verticalArrangement = Arrangement.Top,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
+            repeat(4) {
+                TaskCard() {
+
+                }
+            }
         }
     }
 }

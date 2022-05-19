@@ -45,13 +45,15 @@ fun DefaultIcon(
     modifier: Modifier = Modifier,
     iconModifier: Modifier = Modifier.fillMaxSize(),
     shape: Shape = RoundedCornerShape(24.dp),
+    containerColor: Color = MaterialTheme.colorScheme.onPrimary,
+    contentColor: Color = MaterialTheme.colorScheme.primary,
     painter: Painter,
     contentDescription: String,
 ) {
     Box(
         modifier = modifier
             .background(
-                color = MaterialTheme.colorScheme.onPrimary,
+                color = containerColor,
                 shape = shape
             ),
         contentAlignment = Alignment.Center,
@@ -60,7 +62,7 @@ fun DefaultIcon(
             modifier = iconModifier,
             painter = painter,
             contentDescription = contentDescription,
-            tint = MaterialTheme.colorScheme.primary
+            tint = contentColor
         )
     }
 }
